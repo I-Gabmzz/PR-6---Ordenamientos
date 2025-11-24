@@ -1,14 +1,17 @@
 package com.example.ordenamientos;
 
-
 import java.util.Arrays;
 
+// Esta clase se encarga de contener y replicar varios algoritmos de ordenamiento
 public class MetodosDeOrdenamiento {
 
+    // | Quicksort |
+    // Metodo que inicia el ordenamiento Quicksort
     public static void quicksort(double[] arreglo) {
         if (arreglo == null || arreglo.length == 0) return;
         quicksort(arreglo, 0, arreglo.length - 1);
     }
+    // Metodo recursivo que implementa la logica de Quicksort
     private static void quicksort(double[] arreglo, int izquierda, int derecha) {
         if (izquierda >= derecha) return;
 
@@ -31,11 +34,15 @@ public class MetodosDeOrdenamiento {
         if (i < derecha) quicksort(arreglo, i, derecha);
     }
 
+
+    // | Mergesort |
+    // Este metodo es el que inicia el ordenamiento Mergesort
     public static void mergesort(double[] arreglo) {
         if (arreglo == null || arreglo.length < 2) return;
         double[] temporal = new double[arreglo.length];
         mergesort(arreglo, temporal, 0, arreglo.length - 1);
     }
+    // Metodo que se encarga de dividir el arreglo para Mergesort
     private static void mergesort(double[] arreglo, double[] temporal, int izquierda, int derecha) {
         if (izquierda < derecha) {
             int medio = (izquierda + derecha) / 2;
@@ -44,6 +51,7 @@ public class MetodosDeOrdenamiento {
             fusion(arreglo, temporal, izquierda, medio, derecha);
         }
     }
+    // Metodo que fusiona dos sub-arreglos ordenados
     private static void fusion(double[] arreglo, double[] temporal, int izquierda, int medio, int derecha) {
         for (int i = izquierda; i <= derecha; i++) {
             temporal[i] = arreglo[i];
@@ -66,6 +74,8 @@ public class MetodosDeOrdenamiento {
         }
     }
 
+    // | Shell Sort |
+    // Se encarga de ordenar un arreglo usando el algoritmo Shell Sort
     public static void shellSort(double[] arreglo) {
         int n = arreglo.length;
         int salto = 1;
@@ -86,6 +96,8 @@ public class MetodosDeOrdenamiento {
         }
     }
 
+    // | Seleccion Directa |
+    // Metodo el cual ordena un arreglo usando el algoritmo de Seleccion Directa
     public static void seleccionDirecta(double[] arreglo) {
         int n = arreglo.length;
         for (int i = 0; i < n - 1; i++) {
@@ -101,6 +113,8 @@ public class MetodosDeOrdenamiento {
         }
     }
 
+    // | Radix Sort |
+    // Metodo el cual inicia el ordenamiento Radix Sort
     public static void radixSort(long[] arreglo) {
         if (arreglo.length == 0) return;
 
@@ -122,6 +136,7 @@ public class MetodosDeOrdenamiento {
             arreglo[idx++] = positivo;
         }
     }
+    // Este metodo pertenece al Radix Sort pero solo opera sobre numeros positivos.
     private static void radixSortPositivos(long[] arreglo) {
         if (arreglo.length == 0) return;
 
@@ -137,6 +152,7 @@ public class MetodosDeOrdenamiento {
         }
     }
 
+    // Metodo que es usado por Radix Sort y sirve para ordenar por un digito
     private static void countSort(long[] arreglo, long exponente) {
         int n = arreglo.length;
         long[] salida = new long[n];
